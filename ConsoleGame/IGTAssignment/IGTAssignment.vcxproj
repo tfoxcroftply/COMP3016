@@ -133,6 +133,9 @@
   <ItemGroup>
     <Text Include="Map0.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Keyboard.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -16,4 +16,11 @@ public:
     string GetSprite() {
         return Sprite;
     }
+
+    bool MoveX() {
+
+    }
+    bool MoveY() {
+
+    }
 };

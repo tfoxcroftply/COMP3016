@@ -4,8 +4,10 @@ using namespace std;
 #include <string>
 #include <windows.h>
 #include <vector>
+#include <conio.h>
 
 #include "Classes.h"
+#include "Keyboard.h"
 
 int RefreshRate = 3; // Per second
 const int MapYSize = 10;
