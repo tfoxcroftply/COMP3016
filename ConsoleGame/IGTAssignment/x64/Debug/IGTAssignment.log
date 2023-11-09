@@ -1,5 +1,2 @@
-﻿  Classes.h
-  IGTAssignment.cpp
-C:\Users\Tobey\Documents\GitHub\COMP3016\ConsoleGame\IGTAssignment\Keyboard.h(12,4): error C2146: syntax error: missing ';' before identifier 'Sleep'
-C:\Users\Tobey\Documents\GitHub\COMP3016\ConsoleGame\IGTAssignment\Keyboard.h(10,17): error C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-  Generating Code...
+﻿  IGTAssignment.cpp
+  IGTAssignment.vcxproj -> C:\Users\Tobey\Documents\GitHub\COMP3016\ConsoleGame\x64\Debug\IGTAssignment.exe

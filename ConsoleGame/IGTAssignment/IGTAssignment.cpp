@@ -45,9 +45,11 @@ void DisplayRefresh() {
 int main()
 {
     Character.SetSprite("O");
+    
+    while (true) {
+        system("cls");
+        cout << GetInput();
+        Sleep(1000/RefreshRate);
+    }
 
-    //while (true) { // driver function
-      //  DisplayRefresh;
-    //    Sleep(1/RefreshRate);
-   // }
 }
