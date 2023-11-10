@@ -5,19 +5,59 @@ using namespace std;
 #include <windows.h>
 #include <vector>
 #include <conio.h>
-
+#include <fstream>
+#include <format>
+#include <sstream>
 #include "Classes.h"
-#include "Keyboard.h"
+#include <io.h>
+#include <fcntl.h>
 
+
+// Variables //
 int RefreshRate = 3; // Per second
-const int MapYSize = 10;
+const int MapYSize = 16;
+int CurrentMap = 0;
+string MapLines[MapYSize];
 
-int CurrentMapId = 0;
-int LastMapId = 1;
-bool Verbose = true;
-
-
+bool Verbose = false;
 CharacterObject Character;
+
+
+// Functions //
+
+void vPrint(string Input) {
+    if (Verbose == true) {
+        cout << Input;
+    }
+}
+
+void SetMap(int TargetMap) {
+    stringstream ss;
+    ss << "Map" << TargetMap << ".txt";
+    ifstream MapFile(ss.str());
+    if (MapFile.is_open()) {
+        vPrint("Opened file");
+        CurrentMap = TargetMap;
+        for (int i = 0; i < MapYSize; i++) {
+            string ReadLine;
+            getline(MapFile, ReadLine);
+            MapLines[i] = ReadLine;
+        }
+    }
+}
+
+void DisplayMap() {
+    for (int i = 0; i < MapYSize; i++) {
+        string str = MapLines[i];
+        wstring ws(str.begin(), str.end());
+        cout << str << endl;
+    }
+}
+
+int GetKeyboardInput() {
+    int Input = _getch();
+    return Input;
+}
 
 void vPrint(string Instruction, string InputString) {
     static vector<string> PrintData;
@@ -28,28 +68,10 @@ void vPrint(string Instruction, string InputString) {
     }
 }
 
-void DisplayRefresh() {
-    static string MapData[MapYSize];
-
-    if (CurrentMapId != LastMapId) {
-        cout << "Map update requested";
-
-        LastMapId = CurrentMapId;
-    }
-    return;
-
-
-
-}
-
 int main()
 {
     Character.SetSprite("O");
-    
-    while (true) {
-        system("cls");
-        cout << GetInput();
-        Sleep(1000/RefreshRate);
-    }
+    SetMap(1);
+    DisplayMap();
 
 }

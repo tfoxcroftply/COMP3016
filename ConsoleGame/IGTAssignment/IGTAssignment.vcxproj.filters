@@ -23,11 +23,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Map0.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Keyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Map1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
