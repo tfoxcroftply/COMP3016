@@ -12,6 +12,7 @@ using namespace std;
 #include <io.h>
 #include <fcntl.h>
 #include <process.h>
+#include <cstdlib>
 
 
 // Variables //
@@ -23,6 +24,7 @@ bool Verbose = false;
 bool GameRunning = true;
 int PlayerScore = 0;
 bool Error = false;
+bool SilentError = false;
 string ErrorReason = "";
 CharacterObject Character("O");
 MapObject MapData;
@@ -74,18 +76,22 @@ void LoadMap(int TargetMap) {
 
 void DisplayMap() {
     ClearConsole();
-    cout << endl;
+    string Insert = "";
+    if (SilentError == true) {
+        Insert = "!";
+    }
+    Color(4);
+    cout << Insert << endl;
+
     for (int i = 0; i < MapYSize; i++) {
         string str = MapData.MapLines[i];
         cout << "   ";
         for (char& c : str)
         {
             Color(7);
-
             if (c == '#') {
                 Color(8);
             }
-
             cout << c;
             c = '*';
         }
@@ -110,21 +116,28 @@ void vPrint(string Instruction, string InputString) {
     }
 }
 
-
 void Logic() {
     DisplayMap();
 }
 
-
-
 int main()
 {
     // Init
+
+    #ifndef _WIN32
+        Color(4);
+        cout << "This program is intended for Windows systems only." << endl;
+        cout << "Press enter to continue anyway.";
+        cin.get();
+    #endif
+
     cursorInfo.dwSize = 100;
     cursorInfo.bVisible = false;
     SetConsoleCursorInfo(Console, &cursorInfo);
     LoadMap(1);
     
+    system("cls");
+
     // Logic loop
     while (GameRunning == true && Error == false) {
         Logic();
