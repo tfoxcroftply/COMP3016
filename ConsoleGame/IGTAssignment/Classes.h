@@ -28,6 +28,51 @@ public:
     }
 };
 
+class EnemyObject {
+private:
+    int Health;
+    int XPos;
+    int YPos;
+    int MaxHealth;
+
+public:
+    EnemyObject(int InputX, int InputY) {
+        XPos = InputX;
+        YPos = InputY;
+        Health = 100;
+        MaxHealth = 100;
+        return;
+    }
+
+    void SetType(string Type) {
+        if (Health == 100 and Type != "regular") {
+            if (Type == "Heavy") {
+                MaxHealth = 200;
+                Health = 200;
+            }
+        }
+    }
+
+    pair <int, int> GetPos() {
+        return make_pair(XPos, YPos);
+    }
+
+    int GetHealth() {
+        return Health;
+    }
+    int GetMaxHealth() {
+        return MaxHealth;
+    }
+
+    bool Damage(int HitDamage) {
+        Health -= HitDamage;
+        if (Health <= 0) {
+            delete this;
+            return true;
+        }
+    }
+};
+
 class MapObject {
 public:
     int Id;

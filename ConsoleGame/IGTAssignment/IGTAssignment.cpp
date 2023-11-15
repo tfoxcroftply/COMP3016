@@ -28,6 +28,8 @@ bool SilentError = false;
 string ErrorReason = "";
 CharacterObject Character("O");
 MapObject MapData;
+EnemyObject ObjectPool[10];
+
 
 HANDLE Console = GetStdHandle(STD_OUTPUT_HANDLE);
 CONSOLE_CURSOR_INFO cursorInfo;
@@ -116,6 +118,22 @@ void DisplayMap() {
         }
         CurY--;
         cout << endl;
+
+        for (EnemyObject Enemy : ObjectPool) {
+            Color(4);
+            if (&Enemy == NULL) {
+                if (Enemy.GetHealth() > 0) {
+                    int HealthBars = Enemy.GetMaxHealth() / 10;
+
+                    //////////// left off here
+
+                    string Bars(10,'X');
+
+                    cout << "[" + Bars + "]";
+                    cout << endl;
+                }
+            }
+        }
     }
     cout << endl;
     Color(7);
