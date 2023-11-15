@@ -47,7 +47,7 @@ void ClearConsole() { // Method prevents flickering
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-void Color(int Input) {
+void Color(char Input) {
     SetConsoleTextAttribute(Console, Input); // Shortens
 }
 
@@ -83,18 +83,38 @@ void DisplayMap() {
     Color(4);
     cout << Insert << endl;
 
+    int CharX = Character.XPos;
+    int CharY = Character.YPos;
+    int CurY = MapYSize - 1; // Starts top row
+
     for (int i = 0; i < MapYSize; i++) {
         string str = MapData.MapLines[i];
         cout << "   ";
+        int CharCount = 0;
         for (char& c : str)
         {
+            string Override = "";
             Color(7);
-            if (c == '#') {
+            if (CharCount == 0 or CharCount == 42 or i == 0 or i == MapYSize - 1) {
                 Color(8);
+            } else {
+                if (CharX == CharCount and CharY == CurY) {
+                    Override = Character.GetSprite();
+                    Color(Character.Color);
+                }
+                if (c == '#') {
+                    Color(6);
+                }
             }
-            cout << c;
+            if (Override != "") {
+                cout << Override;
+            } else {
+                cout << c;
+            }
             c = '*';
+            CharCount++;
         }
+        CurY--;
         cout << endl;
     }
     cout << endl;
@@ -134,6 +154,10 @@ int main()
     cursorInfo.dwSize = 100;
     cursorInfo.bVisible = false;
     SetConsoleCursorInfo(Console, &cursorInfo);
+
+    Character.MoveX(5);
+    Character.MoveY(5);
+    Character.Color = 3;
     LoadMap(1);
     
     system("cls");
@@ -163,7 +187,7 @@ int main()
     }
     else {
         Color(4);
-        cout << "A fatal error has occured and the program has exited." << endl;
+        cout << "An error has occured and the program has exited." << endl;
         if (ErrorReason != "") {
             cout << "The program reported an error: " << ErrorReason << endl;
         }

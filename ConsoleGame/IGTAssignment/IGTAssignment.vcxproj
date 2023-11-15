@@ -131,7 +131,9 @@
     <ClCompile Include="IGTAssignment.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Map1.txt" />
+    <Text Include="Map1.txt">
+      <DeploymentContent>true</DeploymentContent>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Keyboard.h" />

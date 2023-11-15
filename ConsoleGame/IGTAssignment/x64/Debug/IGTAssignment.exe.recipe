@@ -5,7 +5,11 @@
       <FullPath>C:\Users\Tobey\Documents\GitHub\COMP3016\ConsoleGame\x64\Debug\IGTAssignment.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\Tobey\Documents\GitHub\COMP3016\ConsoleGame\IGTAssignment\Map1.txt</FullPath>
+    </ContentFile>
+  </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>

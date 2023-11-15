@@ -20,11 +20,11 @@ public:
         return Sprite;
     }
 
-    bool MoveX() {
-
+    void MoveX(int Input) {
+        XPos = Input;
     }
-    bool MoveY() {
-
+    void MoveY(int Input) {
+        YPos = Input;
     }
 };
 
