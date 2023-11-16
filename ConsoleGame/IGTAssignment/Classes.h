@@ -36,6 +36,8 @@ private:
     int MaxHealth;
 
 public:
+    EnemyObject() {};
+
     EnemyObject(int InputX, int InputY) {
         XPos = InputX;
         YPos = InputY;
