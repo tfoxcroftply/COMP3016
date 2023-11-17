@@ -6,6 +6,7 @@ class CharacterObject {
 private:
     string Sprite;
 
+
 public:
     int XPos = 0;
     int YPos = 0;
@@ -30,13 +31,17 @@ public:
 
 class EnemyObject {
 private:
-    int Health;
-    int XPos;
-    int YPos;
-    int MaxHealth;
+    bool Active = false;
+    int Health = 0;
+    int XPos = 0;
+    int YPos = 0;
+    int MaxHealth = 0;
 
 public:
-    EnemyObject(int InputX, int InputY) {
+    EnemyObject() {};
+
+    void Init(int InputX, int InputY) {
+        Active = true;
         XPos = InputX;
         YPos = InputY;
         Health = 100;
@@ -55,6 +60,10 @@ public:
 
     pair <int, int> GetPos() {
         return make_pair(XPos, YPos);
+    }
+
+    bool IsActive() {
+        return Active;
     }
 
     int GetHealth() {

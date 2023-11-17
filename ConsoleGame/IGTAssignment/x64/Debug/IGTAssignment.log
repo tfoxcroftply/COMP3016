@@ -1,5 +1,6 @@
-﻿  Classes.h
-  IGTAssignment.cpp
+﻿  IGTAssignment.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\format(43): warning STL4038: The contents of <format> are available only with C++20 or later.
-  Generating Code...
+C:\Users\tobey\Documents\GitHub\COMP3016\ConsoleGame\IGTAssignment\IGTAssignment.cpp(139,29): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
+C:\Users\tobey\Documents\GitHub\COMP3016\ConsoleGame\IGTAssignment\IGTAssignment.cpp(140,29): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
+C:\Users\tobey\Documents\GitHub\COMP3016\ConsoleGame\IGTAssignment\Classes.h(82): warning C4715: 'EnemyObject::Damage': not all control paths return a value
   IGTAssignment.vcxproj -> C:\Users\tobey\Documents\GitHub\COMP3016\ConsoleGame\x64\Debug\IGTAssignment.exe

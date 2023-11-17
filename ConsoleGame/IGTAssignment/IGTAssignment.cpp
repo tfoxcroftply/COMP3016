@@ -13,7 +13,7 @@ using namespace std;
 #include <fcntl.h>
 #include <process.h>
 #include <cstdlib>
-
+#include <math.h>
 
 // Variables //
 int RefreshRate = 3; // Per second
@@ -51,6 +51,7 @@ void ClearConsole() { // Method prevents flickering
 
 void Color(char Input) {
     SetConsoleTextAttribute(Console, Input); // Shortens
+    
 }
 
 void LogError(string Input) {
@@ -98,7 +99,7 @@ void DisplayMap() {
             string Override = "";
             Color(7);
             if (CharCount == 0 or CharCount == 42 or i == 0 or i == MapYSize - 1) {
-                Color(8);
+                Color(8);  
             } else {
                 if (CharX == CharCount and CharY == CurY) {
                     Override = Character.GetSprite();
@@ -118,26 +119,36 @@ void DisplayMap() {
         }
         CurY--;
         cout << endl;
+    }
 
-        for (EnemyObject Enemy : ObjectPool) {
-            Color(4);
-            if (&Enemy == NULL) {
-                if (Enemy.GetHealth() > 0) {
-                    int HealthBars = Enemy.GetMaxHealth() / 10;
+    cout << endl;
+    Color(7);
+    cout << "      Current Level: " << MapData.Id << " | Current Score: " << PlayerScore << endl << endl;
 
-                    //////////// left off here
+    for (EnemyObject Enemy : ObjectPool) {
+        Color(4);
+        if (Enemy.IsActive() == true) {
+            if (Enemy.GetHealth() > 0) {
+                float HealthBars = 10;
+                float HealthComponent = HealthBars / Enemy.GetMaxHealth();
 
-                    string Bars(10,'X');
+                float HealthBlocks = round(HealthComponent * Enemy.GetHealth());
+                float FillerBlocks = HealthBars - HealthBlocks;
 
-                    cout << "[" + Bars + "]";
-                    cout << endl;
-                }
+
+                string Bars(HealthBlocks, '#');
+                string Fill(FillerBlocks, ' ');
+
+                cout << "      Enemy: [" + Bars + Fill + "] (" + to_string(Enemy.GetHealth()) + "/" + to_string(Enemy.GetMaxHealth()) + ")";
+
+                cout << endl << Enemy.GetHealth();
+                cout << Enemy.GetMaxHealth();
+
             }
         }
     }
-    cout << endl;
-    Color(7);
-    cout << "      Current Level: " << MapData.Id << " | Current Score: " << PlayerScore << endl;
+
+
 }
 
 int GetKeyboardInput() {
@@ -161,6 +172,9 @@ void Logic() {
 int main()
 {
     // Init
+
+    ObjectPool[1].Init(0,0);
+    ObjectPool[1].Damage(70);
 
     #ifndef _WIN32
         Color(4);
