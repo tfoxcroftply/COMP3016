@@ -8,8 +8,8 @@ private:
 
 
 public:
-    int XPos = 0;
-    int YPos = 0;
+    int XPos = 1;
+    int YPos = 2;
     int Color = 3;
 
     CharacterObject(string Input) {

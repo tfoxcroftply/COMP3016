@@ -16,7 +16,7 @@ using namespace std;
 #include <math.h>
 
 // Variables //
-int RefreshRate = 3; // Per second
+int RefreshRate = 5; // Per second
 bool Verbose = false;
 
 
@@ -31,7 +31,8 @@ MapObject MapData;
 EnemyObject ObjectPool[10];
 
 
-HANDLE Console = GetStdHandle(STD_OUTPUT_HANDLE);
+HANDLE ConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
+HANDLE ConsoleIn = GetStdHandle(STD_INPUT_HANDLE);
 CONSOLE_CURSOR_INFO cursorInfo;
 
 
@@ -46,11 +47,11 @@ void ClearConsole() { // Method prevents flickering
     COORD coord;
     coord.X = 0;
     coord.Y = 0;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+    SetConsoleCursorPosition(ConsoleOut, coord);
 }
 
 void Color(char Input) {
-    SetConsoleTextAttribute(Console, Input); // Shortens
+    SetConsoleTextAttribute(ConsoleOut, Input); // Shortens
     
 }
 
@@ -77,6 +78,11 @@ void LoadMap(int TargetMap) {
     }
 }
 
+bool CalculateAttack() {
+
+    return true;
+}
+
 void DisplayMap() {
     ClearConsole();
     string Insert = "";
@@ -89,6 +95,27 @@ void DisplayMap() {
     int CharX = Character.XPos;
     int CharY = Character.YPos;
     int CurY = MapYSize - 1; // Starts top row
+
+    bool Attack = false;
+    string Movement = "";
+
+    if (_kbhit() == 1) {
+        char Input = _getch();
+        if (Input == ' ') {
+            Attack = true;
+        }
+        if (Input == 'w' || Input == 'a' || Input == 's' || Input == 'd') {
+            Movement = Input;
+        }
+        //cout << Movement << "                                                  " << endl;
+    }
+    else {
+        //cout << "no input                                                  " << endl;
+    }
+
+    FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+
+ 
 
     for (int i = 0; i < MapYSize; i++) {
         string str = MapData.MapLines[i];
@@ -103,7 +130,15 @@ void DisplayMap() {
             } else {
                 if (CharX == CharCount and CharY == CurY) {
                     Override = Character.GetSprite();
-                    Color(Character.Color);
+                    if (Attack == false) {
+                        Color(Character.Color);
+                    }
+                    else {
+                        if (CalculateAttack() == true) {
+                            Override = "*";
+                        }
+                        Color(4);
+                    }
                 }
                 if (c == '#') {
                     Color(6);
@@ -139,22 +174,15 @@ void DisplayMap() {
                 string Bars(HealthBlocks, '#');
                 string Fill(FillerBlocks, ' ');
 
-                cout << "      Enemy: [" + Bars + Fill + "] (" + to_string(Enemy.GetHealth()) + "/" + to_string(Enemy.GetMaxHealth()) + ")";
-
-                cout << endl << Enemy.GetHealth();
-                cout << Enemy.GetMaxHealth();
-
+                cout << "         Enemy: [" + Bars + Fill + "] (" + to_string(Enemy.GetHealth()) + "/" + to_string(Enemy.GetMaxHealth()) + ")"  << endl;
             }
         }
     }
 
-
+ 
 }
 
-int GetKeyboardInput() {
-    int Input = _getch();
-    return Input;
-}
+
 
 void vPrint(string Instruction, string InputString) {
     static vector<string> PrintData;
@@ -175,6 +203,8 @@ int main()
 
     ObjectPool[1].Init(0,0);
     ObjectPool[1].Damage(70);
+    ObjectPool[2].Init(4, 4);
+    ObjectPool[2].Damage(20);
 
     #ifndef _WIN32
         Color(4);
@@ -185,10 +215,8 @@ int main()
 
     cursorInfo.dwSize = 100;
     cursorInfo.bVisible = false;
-    SetConsoleCursorInfo(Console, &cursorInfo);
+    SetConsoleCursorInfo(ConsoleOut, &cursorInfo);
 
-    Character.MoveX(5);
-    Character.MoveY(5);
     Character.Color = 3;
     LoadMap(1);
     
