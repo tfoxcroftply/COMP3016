@@ -370,7 +370,7 @@ void DisplayMap() { // Display loop for map
                 InsertionType = "(" + Type + ")";
             }
 
-            cout << "         Enemy: [" + Bars + Fill + "] (" + to_string(Enemy.GetHealth()) + "/" + to_string(Enemy.GetMaxHealth()) + ") " << InsertionType << "     " << endl; // Health bar, with insertion of any generated strings
+            cout << "         Enemy: [" + Bars + Fill + "] (" + to_string(Enemy.GetHealth()) + "/" + to_string(Enemy.GetMaxHealth()) + ") " << InsertionType << "               " << endl; // Health bar, with insertion of any generated strings
         }
     }
 
@@ -415,7 +415,7 @@ int main() // Main function of the program that is automatically run
     Character.MoveX(1);
     Character.MoveY(1);
 
-    cout << "Press any key to play"; // Display messages
+    cout << "Press enter to play"; // Display messages
     cin.get(); // Wait for the user to interact
 
     LoadMap(1); // Load the first map to begin the game.
