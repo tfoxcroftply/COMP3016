@@ -13,7 +13,6 @@
 
 <h2>UML design diagram</h2>
 <p>Diagram was created using https://app.diagrams.net/</p>
-<p>Insert image here</p>
 
 <h2>Exception handling and test cases</h2>
 <p>The program has a function that can be called from anywhere. It is a error handling function.</p>
@@ -66,7 +65,7 @@
 <p>I have attempted to implement some USPs into my game, however I am uncertain on their significance and originality. One is the score changing depending on the success of each level, and whether it was completed on time. Another USP could be the dynamic enemy types, and how some have differing properties to others. Another could be the tracking of game data at the bottom of the console game.</p>
 
 <h2>YouTube video</h2>
-<p>Link here</p>
+<p>https://youtu.be/Pi8Ua-5AXEI</p>
 
 <h2>Git repository</h2>
 <p>https://github.com/tfoxcroftply/COMP3016</p> 

@@ -1,8 +1,7 @@
-﻿  Classes.h
-  IGTAssignment.cpp
+﻿  IGTAssignment.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\format(43): warning STL4038: The contents of <format> are available only with C++20 or later.
-  Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 271 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  IGTAssignment.vcxproj -> C:\Users\Tobey\Documents\GitHub\COMP3016\ConsoleGame\x64\Release\IGTAssignment.exe
+C:\Users\Tobey\Documents\GitHub\COMP3016\Source\IGTAssignment\IGTAssignment.cpp(78,43): warning C4244: 'return': conversion from '__time64_t' to 'int', possible loss of data
+C:\Users\Tobey\Documents\GitHub\COMP3016\Source\IGTAssignment\IGTAssignment.cpp(337,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Tobey\Documents\GitHub\COMP3016\Source\IGTAssignment\IGTAssignment.cpp(338,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tobey\Documents\GitHub\COMP3016\Source\IGTAssignment\IGTAssignment.cpp(363,25): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
+C:\Users\Tobey\Documents\GitHub\COMP3016\Source\IGTAssignment\IGTAssignment.cpp(364,25): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data

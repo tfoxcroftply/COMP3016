@@ -443,6 +443,7 @@ int main() // Main function of the program that is automatically run
         Color(2); // Set to green
         cout << " You reached level " << MapData.Id << "!" << endl; // Give player details
         cout << " You reached a " << Insertion << "score of " << PlayerScore << "!"; 
+        cin.get();
     }
     else { // An error has occured
         Color(4); // Set the colour to red
