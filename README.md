@@ -13,6 +13,8 @@
 
 <h2>UML design diagram</h2>
 <p>Diagram was created using https://app.diagrams.net/</p>
+![UML](https://github.com/tfoxcroftply/COMP3016/assets/146833953/37b2d4d6-b5dc-415e-a574-f363f8579c5e)
+
 
 <h2>Exception handling and test cases</h2>
 <p>The program has a function that can be called from anywhere. It is a error handling function.</p>
